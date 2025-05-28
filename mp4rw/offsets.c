@@ -57,6 +57,10 @@ typedef enum firmware_version : uint32_t {
 	V740 = 0x7400000,
 	V760 = 0x7600000,
 	V761 = 0x7610000,
+	V800 = 0x8000000,
+	V820 = 0x8200000,
+	V840 = 0x8400000,
+	V860 = 0x8600000,
 } firmware_version_t;
 
 static uintptr_t get_kernel_base(void) {
@@ -138,6 +142,12 @@ uintptr_t get_allproc_address(void) {
 		case V761:
 			allproc_address = 0x2859D50;
 			break;
+		case V800:
+		case V820:
+		case V840:
+		case V860:
+			allproc_address = 0x2885D50;
+			break;
 		default:
 			puts("firmware version not supported");
 			exit(-1);
@@ -202,6 +212,12 @@ uintptr_t get_bus_data_devices_address(void) {
 		case V760:
 		case V761:
 			bus_data_devices_address = 0x1FA5718;
+			break;
+		case V800:
+		case V820:
+		case V840:
+		case V860:
+			bus_data_devices_address = 0x1FB5718;
 			break;
 		default:
 			puts("firmware version not supported");
