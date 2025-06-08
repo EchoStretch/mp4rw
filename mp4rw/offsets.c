@@ -155,20 +155,20 @@ uintptr_t get_allproc_address(void) {
 		case V820:
 		case V840:
 		case V860:
-			allproc_address = 0x2885D50;
+			allproc_address = 0x2875D50;
 			break;
 		case V900:
 		case V920:
 		case V940:
 		case V960:
-			allproc_address = 0x2765D50;
+			allproc_address = 0x2755D50;
 			break;
 		case V1000:
 		case V1001:
 		case V1020:
 		case V1040:
 		case V1060:
-			allproc_address = 0x2775D70;
+			allproc_address = 0x2765D70;
 			break;
 		default:
 			puts("firmware version not supported");
@@ -239,20 +239,20 @@ uintptr_t get_bus_data_devices_address(void) {
 		case V820:
 		case V840:
 		case V860:
-			bus_data_devices_address = 0x1FB5718;
+			bus_data_devices_address = 0x1FA5718;
 			break;
 		case V900:
 		case V920:
 		case V940:
 		case V960:
-			bus_data_devices_address = 0x1F75718;
+			bus_data_devices_address = 0x1F65718;
 			break;
 		case V1000:
 		case V1001:
 		case V1020:
 		case V1040:
 		case V1060:
-			bus_data_devices_address = 0x1F75718;
+			bus_data_devices_address = 0x1F65718;
 			break;
 		default:
 			puts("firmware version not supported");
