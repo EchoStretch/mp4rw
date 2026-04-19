@@ -16,24 +16,24 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-constexpr uint64_t MDSR_MAGIC = 0xCBB3D18A1AA5DAEF;
-constexpr size_t MDSR_LOG_BUF_SIZE = 0x10000;
+static const uint64_t MDSR_MAGIC = 0xCBB3D18A1AA5DAEF;
+static const size_t MDSR_LOG_BUF_SIZE = 0x10000;
 
-constexpr uint32_t MP4_DEVICE_NAMEUNIT = __builtin_bswap32('mp40');
-constexpr uint32_t ROOT_DEVICE_NAMEUNIT = __builtin_bswap32('root');
+static const uint32_t MP4_DEVICE_NAMEUNIT = __builtin_bswap32('mp40');
+static const uint32_t ROOT_DEVICE_NAMEUNIT = __builtin_bswap32('root');
 
-constexpr uint32_t ZCN_BAR2_OFFSET = 0x18;
-constexpr uint32_t BUSHANDLE_OFFSET = 0x10;
+static const uint32_t ZCN_BAR2_OFFSET = 0x18;
+static const uint32_t BUSHANDLE_OFFSET = 0x10;
 
-constexpr uint32_t COREDUMP_COMMAND = 0x20303000;
+static const uint32_t COREDUMP_COMMAND = 0x20303000;
 
-constexpr uint32_t EXPECTED_COREDUMP_STATE = 0xf;
-constexpr uint32_t EXPECTED_COREDUMP_FLAGS = 0x212;
+static const uint32_t EXPECTED_COREDUMP_STATE = 0xf;
+static const uint32_t EXPECTED_COREDUMP_FLAGS = 0x212;
 
 
-constexpr uint32_t DEVICE_DEVLINK_OFFSET = 0x18;
-constexpr uint32_t DEVICE_NAMEUNIT_OFFSET = 0x58;
-constexpr uint32_t DEVICE_SOFTC_OFFSET = 0x88;
+static const uint32_t DEVICE_DEVLINK_OFFSET = 0x18;
+static const uint32_t DEVICE_NAMEUNIT_OFFSET = 0x58;
+static const uint32_t DEVICE_SOFTC_OFFSET = 0x88;
 
 // for locating the coredump flags, state and for finding zcn_bar2
 static uint8_t mp4_softc_data[0x1000];
@@ -114,8 +114,8 @@ static void fill_mp4_softc_data(void) {
 }
 
 static bool is_coredump_buffer(uintptr_t value) {
-	constexpr uintptr_t UPPER_MASK = 0xffffff0000000000;
-	constexpr uintptr_t LOWER_MASK = 0xfffff;
+	static const uintptr_t UPPER_MASK = 0xffffff0000000000;
+	static const uintptr_t LOWER_MASK = 0xfffff;
 	if ((value & UPPER_MASK) != UPPER_MASK) {
 		return false;
 	}
@@ -150,7 +150,7 @@ static void init_mp4_values(void) {
 	}
 
 	const uint32_t *restrict values = (uint32_t *)mp4_softc_data;
-	constexpr size_t VALUES_LENGTH = sizeof(mp4_softc_data)/sizeof(uint32_t);
+	static const size_t VALUES_LENGTH = sizeof(mp4_softc_data)/sizeof(uint32_t);
 	size_t pos = 0;
 	for (; pos < VALUES_LENGTH; pos++) {
 		if ((values[pos] & ~0x10) == EXPECTED_COREDUMP_STATE) {
@@ -180,7 +180,7 @@ static void init_mp4_values(void) {
 
 	pos /= 2;
 	const uintptr_t *restrict addresses = (uintptr_t *)mp4_softc_data;
-	constexpr size_t ADDRESSES_LENGTH = sizeof(mp4_softc_data)/sizeof(uintptr_t);
+	static const size_t ADDRESSES_LENGTH = sizeof(mp4_softc_data)/sizeof(uintptr_t);
 
 	for (; pos < ADDRESSES_LENGTH; pos++) {
 		if (is_coredump_buffer(addresses[pos])) {

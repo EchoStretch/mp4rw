@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 
-constexpr uint32_t UCRED_AUTHID_OFFSET = 0x58;
+static const uint32_t UCRED_AUTHID_OFFSET = 0x58;
 
 static inline uint64_t ucred_get_authid(uintptr_t ucred) {
 	uint64_t authid = 0;

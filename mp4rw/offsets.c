@@ -70,6 +70,16 @@ typedef enum firmware_version : uint32_t {
 	V1020 = 0x10200000,
 	V1040 = 0x10400000,
 	V1060 = 0x10600000,
+	V1100 = 0x11000000,
+	V1120 = 0x11200000,
+	V1140 = 0x11400000,
+	V1160 = 0x11600000,
+	V1200 = 0x12000000,
+	V1202 = 0x12020000,
+	V1220 = 0x12200000,
+	V1240 = 0x12400000,
+	V1260 = 0x12600000,
+	V1270 = 0x12700000,
 } firmware_version_t;
 
 static uintptr_t get_kernel_base(void) {
@@ -170,6 +180,20 @@ uintptr_t get_allproc_address(void) {
 		case V1060:
 			allproc_address = 0x2765D70;
 			break;
+		case V1100:
+		case V1120:
+		case V1140:
+		case V1160:
+			allproc_address = 0x2875D70;
+			break;
+		case V1200:
+		case V1202:
+		case V1220:
+		case V1240:
+		case V1260:
+		case V1270:
+			allproc_address = 0x2885E00;
+			break;
 		default:
 			puts("firmware version not supported");
 			exit(-1);
@@ -253,6 +277,20 @@ uintptr_t get_bus_data_devices_address(void) {
 		case V1040:
 		case V1060:
 			bus_data_devices_address = 0x1F65718;
+			break;
+		case V1100:
+		case V1120:
+		case V1140:
+		case V1160:
+			bus_data_devices_address = 0x2075718;
+			break;
+		case V1200:
+		case V1202:
+		case V1220:
+		case V1240:
+		case V1260:
+		case V1270:
+			bus_data_devices_address = 0x20757E8;
 			break;
 		default:
 			puts("firmware version not supported");

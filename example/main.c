@@ -15,7 +15,7 @@ extern void kernel_copyout(uint64_t ksrc, void *dest, size_t length);
 
 // coredump buffer is 0x200000
 // don't try to read more then this
-constexpr size_t A53_BUF_LENGTH = 0x1FC000;
+static const size_t A53_BUF_LENGTH = 0x1FC000;
 static uint8_t a53_buf[A53_BUF_LENGTH];
 
 static void dump_mm_mdsr_log(const char *log, size_t length) {

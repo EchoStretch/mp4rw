@@ -4,7 +4,7 @@
 #include <stddef.h> // IWYU pragma: keep
 #include <unistd.h>
 
-constexpr uint32_t PROC_UCRED_OFFSET = 0x40;
+static const uint32_t PROC_UCRED_OFFSET = 0x40;
 
 void kernel_copyin(const void *src, uint64_t kdest, size_t length);
 void kernel_copyout(uint64_t ksrc, void *dest, size_t length);

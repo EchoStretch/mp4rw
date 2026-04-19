@@ -4,8 +4,8 @@
 #include <stdint.h>
 
 
-constexpr int ERROR_VALUE = -1;
-constexpr int SUCCESS_VALUE = 0;
+static const int ERROR_VALUE = -1;
+static const int SUCCESS_VALUE = 0;
 
 /**
  * @brief mp4 memory address types

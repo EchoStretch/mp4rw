@@ -4,12 +4,12 @@
 
 #include <stdint.h>
 
-constexpr uint32_t DECI5S_MAGIC = __builtin_bswap32('PD5s');
-constexpr uint32_t DECI5S_TARGET_KERNEL = 0x80FF0180;
-constexpr uint32_t DECI5S_TARGET_MP4 = 0x80FF0201;
-constexpr uint32_t DECI5S_PROTOCOL_ID_SDBGP = 0x20000201;
-constexpr uint32_t DECI5S_DEFAULT_DCMP = 0x18;
-constexpr uint32_t DECI5S_DEFAULT_CODE = 0x50;
+static const uint32_t DECI5S_MAGIC = __builtin_bswap32('PD5s');
+static const uint32_t DECI5S_TARGET_KERNEL = 0x80FF0180;
+static const uint32_t DECI5S_TARGET_MP4 = 0x80FF0201;
+static const uint32_t DECI5S_PROTOCOL_ID_SDBGP = 0x20000201;
+static const uint32_t DECI5S_DEFAULT_DCMP = 0x18;
+static const uint32_t DECI5S_DEFAULT_CODE = 0x50;
 
 
 typedef enum deci5s_command_type : uint32_t {

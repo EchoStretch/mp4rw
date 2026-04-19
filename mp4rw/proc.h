@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <unistd.h>
 
-constexpr uint32_t PROC_PID_OFFSET = 0xbc;
+static const uint32_t PROC_PID_OFFSET = 0xbc;
 
 uintptr_t proc_get_lib(uintptr_t proc, int handle);
 

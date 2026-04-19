@@ -5,8 +5,8 @@
 #include <stdint.h>
 #include <unistd.h>
 
-constexpr uint64_t SYSCORE_ID = 0x4800000000000007l;
-constexpr uint64_t DECID_ID = 0x4800000000010003l;
+static const uint64_t SYSCORE_ID = 0x4800000000000007l;
+static const uint64_t DECID_ID = 0x4800000000010003l;
 
 static inline uint64_t ucred_swap_authid(uintptr_t ucred, uint64_t id) {
 	uint64_t old_id = ucred_get_authid(ucred);
